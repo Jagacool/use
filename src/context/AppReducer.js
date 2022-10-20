@@ -1,5 +1,4 @@
 
-// esto se ejecuta con el dispatch()
 export  default function appReducer(state, action ) {
     console.log('desde appReducer', state, action)
 
@@ -7,7 +6,6 @@ export  default function appReducer(state, action ) {
       //
       case "ADD_TASK":
         return {
-// esto es donde se  implementerá el payload..
           tasks: [...state.tasks,  action.payload],
         };
         //

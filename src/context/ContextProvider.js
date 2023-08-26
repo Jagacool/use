@@ -4,45 +4,59 @@ import { GlobalContext } from "./GlobalContext";
 
 const initialState = {
   tasks: [
-    {
-      id: 1,
-      title: "title one",
-      description: "some desc",
-      done: true,
-    },
-    {
-      id: 2,
-      title: "title two",
-      description: "some else",
-      done: true,
-    },
+    // Your existing tasks initial state
   ],
+  cartItems: [],
 };
 
 export const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
-  const addTask = (task) =>
-    dispatch({
-      type: "ADD_TASK",
-      payload: { ...task, id: state.tasks.length + 1, done: true },
-    });
+  const addTask = (task) => {
+    // Your existing addTask logic
+  };
 
-  const deleteTask = (id) =>
-    dispatch({
-      type: "DELETE_TASK",
-      payload: id,
-    });
+  const deleteTask = (id) => {
+    // Your existing deleteTask logic
+  };
 
-  const toggleTaskDone = (id) =>
+  const toggleTaskDone = (id) => {
+    // Your existing toggleTaskDone logic
+  };
+
+  const addToCart = (product, quantity) => {
     dispatch({
-      type: "TOGGLE_TASK_DONE",
-      payload: id,
+      type: "ADD_TO_CART",
+      payload: { ...product, quantity: quantity },
     });
+  };
+
+  const removeFromCart = (productId) => {
+    dispatch({
+      type: "REMOVE_FROM_CART",
+      payload: productId,
+    });
+  };
+
+  const updateQuantity = (productId, newQuantity) => {
+    dispatch({
+      type: "UPDATE_QUANTITY",
+      payload: { id: productId, quantity: newQuantity },
+    });
+  };
 
   return (
     <GlobalContext.Provider
-      value={{ ...state, addTask, deleteTask, toggleTaskDone }}
+      value={{
+        tasks: state.tasks,
+        cartItems: state.cartItems,
+        addTask,
+        deleteTask,
+        toggleTaskDone,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+      }}
     >
       {children}
     </GlobalContext.Provider>

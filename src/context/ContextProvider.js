@@ -3,31 +3,19 @@ import appReducer from "./AppReducer";
 import { GlobalContext } from "./GlobalContext";
 
 const initialState = {
-  tasks: [
-    // Your existing tasks initial state
-  ],
+  tasks: [],
   cartItems: [],
 };
 
 export const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
-  const addTask = (task) => {
-    // Your existing addTask logic
-  };
+  // Your existing addTask, deleteTask, toggleTaskDone functions
 
-  const deleteTask = (id) => {
-    // Your existing deleteTask logic
-  };
-
-  const toggleTaskDone = (id) => {
-    // Your existing toggleTaskDone logic
-  };
-
-  const addToCart = (product, quantity) => {
+  const addToCart = (product) => {
     dispatch({
       type: "ADD_TO_CART",
-      payload: { ...product, quantity: quantity },
+      payload: { ...product, quantity: 1 },
     });
   };
 

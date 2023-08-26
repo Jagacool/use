@@ -1,7 +1,7 @@
-import React from "react";
+import "./App.css";
 import { ContextProvider } from "./context/ContextProvider";
+import { CartProvider } from "./context/CartContext"; // Import CartProvider
 import TaskList from "./pages/TaskList";
-import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
